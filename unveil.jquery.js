@@ -6,7 +6,7 @@
 
         // Access to jQuery and DOM versions of element
         base.$el = $(el);
-        base.el = el;
+        base.el  = el;
 
         // Add a reverse reference to the DOM object
         base.$el.data("unveil", base);
@@ -14,8 +14,38 @@
         base.init = function(){
 
             base.options = $.extend({},$.unveil.defaultOptions, options);
+			
+			// give target element space in the DOM
+			var originalTargetCSS = {
+				position:   base.$el.css('position'),
+				visibility: base.$el.css('visibility'),
+				display:    base.$el.css('display')
+			}
+			base.$el.css({'position':'absolute','visibility':'hidden','display':'block'});
+			
+            var width    = base.$el.outerWidth();
+            var height   = base.$el.outerHeight();
+			var position = base.$el.position();
+			
+			// put target element back
+			base.$el.css(originalTargetCSS);
+			
+			// For now, let's work on positioning a red div
+			var canvas = $('<div style="background-color: red;" width="'+width+'" height="'+height+'"></div>');
+			
+			canvas.css({
+		        position: "absolute",
+		        top:      position.top + "px",
+		        left:     position.left + "px",
+				width:    width,
+				height:   height
+		    });
+		
+			// If target is body, it doesn't have a parent in the dom. Append to it.
+			var elementToAppendTo = (base.el == document.body) ? base.$el : base.$el.parent();
 
-            // Put your initialization code here
+			canvas.appendTo(elementToAppendTo);
+			base.$el.show();
         };
 
         // Sample Function, Uncomment to use
@@ -34,11 +64,6 @@
     $.fn.unveil = function(radius, options){
         return this.each(function(){
             (new $.unveil(this, options));
-
-		   // HAVE YOUR PLUGIN DO STUFF HERE
-
-		   // END DOING STUFF
-
         });
     };
 
