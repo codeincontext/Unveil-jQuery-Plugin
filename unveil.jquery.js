@@ -16,19 +16,14 @@
             base.options = $.extend({},$.unveil.defaultOptions, options);
 			
 			// give target element space in the DOM
-			var originalTargetCSS = {
-				position:   base.$el.css('position'),
-				visibility: base.$el.css('visibility'),
-				display:    base.$el.css('display')
-			}
 			base.$el.css({'position':'absolute','visibility':'hidden','display':'block'});
 			
             var width    = base.$el.outerWidth();
             var height   = base.$el.outerHeight();
 			var position = base.$el.position();
 			
-			// put target element back
-			base.$el.css(originalTargetCSS);
+			// unset inline CSS to put target element back
+			base.$el.css({'position':'','visibility':'','display':''});
 			
 			// For now, let's work on positioning a red div
 			var $canvas = $('<div style="background-color: red;" width="'+width+'" height="'+height+'"></div>');
