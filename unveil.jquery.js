@@ -47,6 +47,13 @@
 
         base.startAnimation = function($canvas){
 			var duration = 1000;
+			
+			var centerX = $canvas.width() / 2;
+			var centerY = $canvas.height() / 2;
+			
+			// Calculate distance from center to corner of target
+			var radius = Math.sqrt(Math.pow(centerX,2) + Math.pow(centerY,2));
+			
 			setTimeout(function(){
 				$canvas.remove();
 			}, duration);
