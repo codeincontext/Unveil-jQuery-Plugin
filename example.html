@@ -5,8 +5,37 @@
   <title>Unveil jQuery Plugin Example</title>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
   <script src="unveil.jquery.js" type="text/javascript" charset="utf-8"></script>
+  
+  <style type="text/css">
+    #imageExample {
+      display: none;
+    }
+  </style>
+  
+  <script type="text/javascript" charset="utf-8">
+    function unveilImageExample(){
+      $('#imageExample').unveil();
+    }
+    function resetExample(){
+      $('#imageExample').fadeOut();
+    }
+  </script>
 </head>
 <body>
+  <h1>Unveil jQuery Plugin Example</h1>
+  
+  <p>
+    Unveil is a jQuery plugin that allows you to 'unveil' an element with a radial swipe (it's pretty).
+  </p>
+  <p>
+    If you want to see what it does, you should <a href="javascript:void(0)" onclick="unveilImageExample()">click here</a>.
+  </p>
+  
+  <div id="imageExample">
+    <img src="http://upload.wikimedia.org/wikipedia/en/9/9e/JQuery_logo.svg" />
+    <p>Cool huh?</p>
+    <p><a href="javascript:void(0)" onclick="resetExample()">Reset example.</a></p>
+  </div>
   
 </body>
 </html>
