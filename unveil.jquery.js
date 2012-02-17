@@ -31,9 +31,9 @@
 			base.$el.css(originalTargetCSS);
 			
 			// For now, let's work on positioning a red div
-			var canvas = $('<div style="background-color: red;" width="'+width+'" height="'+height+'"></div>');
+			var $canvas = $('<div style="background-color: red;" width="'+width+'" height="'+height+'"></div>');
 			
-			canvas.css({
+			$canvas.css({
 		        position: "absolute",
 		        top:      position.top + "px",
 		        left:     position.left + "px",
@@ -44,16 +44,16 @@
 			// If target is body, it doesn't have a parent in the dom. Append to it.
 			var elementToAppendTo = (base.el == document.body) ? base.$el : base.$el.parent();
 
-			canvas.appendTo(elementToAppendTo);
+			$canvas.appendTo(elementToAppendTo);
 			base.$el.show();
 			
-			base.startAnimation(canvas);
+			base.startAnimation($canvas);
         };
 
-        base.startAnimation = function(canvas){
+        base.startAnimation = function($canvas){
 			var duration = 1000;
 			setTimeout(function(){
-				canvas.remove();
+				$canvas.remove();
 			}, duration);
         };
 
