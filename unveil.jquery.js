@@ -18,9 +18,9 @@
 			// give target element space in the DOM
 			base.$el.css({'position':'absolute !important','visibility':'hidden !important','display':'block !important'});
 			
-            var width    = base.$el.outerWidth();
-            var height   = base.$el.outerHeight();
-			var position = base.$el.position();
+            var width    = base.$el.outerWidth(),
+                height   = base.$el.outerHeight(),
+			    position = base.$el.position();
 			
 			// unset inline CSS to put target element back
 			base.$el.css({'position':'','visibility':'','display':''});
@@ -48,8 +48,8 @@
         base.startAnimation = function($canvas){
 			var duration = 1000;
 			
-			var centerX = $canvas.width() / 2;
-			var centerY = $canvas.height() / 2;
+			var centerX = $canvas.width() / 2,
+			    centerY = $canvas.height() / 2;
 			
 			// Calculate distance from center to corner of target
 			var radius = Math.sqrt(Math.pow(centerX,2) + Math.pow(centerY,2));
