@@ -46,12 +46,16 @@
 
 			canvas.appendTo(elementToAppendTo);
 			base.$el.show();
+			
+			base.startAnimation(canvas);
         };
 
-        // Sample Function, Uncomment to use
-        // base.functionName = function(paramaters){
-        //
-        // };
+        base.startAnimation = function(canvas){
+			var duration = 1000;
+			setTimeout(function(){
+				canvas.remove();
+			}, duration);
+        };
 
         // Run initializer
         base.init();
