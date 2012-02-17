@@ -26,7 +26,7 @@
 			base.$el.css({'position':'','visibility':'','display':''});
 			
 			// For now, let's work on positioning a red div
-			var $canvas = $('<div style="background-color: red;" width="'+width+'" height="'+height+'"></div>');
+			var $canvas = $('<canvas width="'+width+'" height="'+height+'"></canvas>');
 			
 			$canvas.css({
 		        position: "absolute",
@@ -40,23 +40,39 @@
 			var elementToAppendTo = (base.el == document.body) ? base.$el : base.$el.parent();
 
 			$canvas.appendTo(elementToAppendTo);
-			base.$el.show();
-			
 			base.startAnimation($canvas);
         };
 
         base.startAnimation = function($canvas){
-			var duration = 1000;
-			
-			var centerX = $canvas.width() / 2,
-			    centerY = $canvas.height() / 2;
+			var ctx = $canvas[0].getContext("2d"),
+			    centerX = $canvas.width() / 2,
+			    centerY = $canvas.height() / 2,
+				duration = 500,
+				startAngle = Math.PI * -0.5,
+				currentPosition = 0;
 			
 			// Calculate distance from center to corner of target
 			var radius = Math.sqrt(Math.pow(centerX,2) + Math.pow(centerY,2));
 			
-			setTimeout(function(){
-				$canvas.remove();
-			}, duration);
+			ctx.fillStyle = "rgb(255,255,255)";
+			
+			var interval = setInterval(function(){
+				var endAngle = Math.PI * (currentPosition -0.5);
+				
+				ctx.clearRect(0, 0, $canvas.width(), $canvas.height());
+				ctx.beginPath();
+				ctx.moveTo(centerX, centerY);
+				ctx.arc(centerX, centerY, radius, startAngle, endAngle, true);
+				ctx.fill();
+
+				if (currentPosition == 0) base.$el.show();
+				currentPosition += 0.02;
+				if (currentPosition >= 2){
+					ctx.clearRect(0, 0, $canvas.width(), $canvas.height());
+					$canvas.remove();
+					clearInterval(interval);
+				}
+			}, duration/60);
         };
 
         // Run initializer
