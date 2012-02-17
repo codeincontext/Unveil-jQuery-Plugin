@@ -16,7 +16,7 @@
             base.options = $.extend({},$.unveil.defaultOptions, options);
 			
 			// give target element space in the DOM
-			base.$el.css({'position':'absolute','visibility':'hidden','display':'block'});
+			base.$el.css({'position':'absolute !important','visibility':'hidden !important','display':'block !important'});
 			
             var width    = base.$el.outerWidth();
             var height   = base.$el.outerHeight();
