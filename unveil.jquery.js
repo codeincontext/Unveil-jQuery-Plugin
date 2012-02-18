@@ -79,7 +79,6 @@
 
 				currentPosition += anglePerTick;
 				if (currentPosition >= 2){
-					ctx.clearRect(0, 0, $canvas.width(), $canvas.height());
 					$canvas.remove();
 					clearInterval(interval);
 				}
