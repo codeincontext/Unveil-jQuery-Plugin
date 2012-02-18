@@ -12,8 +12,9 @@
         base.$el.data("unveil", base);
 
         base.init = function(){
-
             base.options = $.extend({},$.unveil.defaultOptions, options);
+
+			base.options.color = base.options.color || base.guessBackground() || '#FFFFFF';
 			
 			// give target element space in the DOM
 			base.$el.css({'position':'absolute','visibility':'hidden','display':'block'});
@@ -84,12 +85,20 @@
 			}, 1000/base.options.fps);
         };
 
+		base.guessBackground = function(){
+		    var parentsWithColor = base.$el.parents().filter(function() {
+		        // only checking for IE and Firefox/Chrome. add values as cross-browser compatibility is required
+		        var color = $(this).css('background-color');
+		        return color != 'transparent' && color != 'rgba(0, 0, 0, 0)';
+		    });
+			return parentsWithColor.first().css('background-color');
+		}
+
         // Run initializer
         base.init();
     };
 
     $.unveil.defaultOptions = {
-        color: '#FFFFFF',
 		duration: 1000,
 		fps: 60
     };
