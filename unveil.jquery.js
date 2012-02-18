@@ -51,8 +51,10 @@
 
         base.startAnimation = function($canvas){
 			var ctx = $canvas[0].getContext("2d"),
-			    centerX = $canvas.width() / 2,
-			    centerY = $canvas.height() / 2,
+				width = $canvas.width(),
+				height = $canvas.height(),
+			    centerX = width / 2,
+			    centerY = height / 2,
 				duration = 1000,
 				startAngle = Math.PI * -0.5,
 				currentPosition = 0;
@@ -69,7 +71,7 @@
 			var interval = setInterval(function(){
 				var endAngle = Math.PI * (currentPosition -0.5);
 				
-				ctx.clearRect(0, 0, $canvas.width(), $canvas.height());
+				ctx.clearRect(0, 0, width, height);
 				ctx.beginPath();
 				ctx.moveTo(centerX, centerY);
 				ctx.arc(centerX, centerY, radius, startAngle, endAngle, true);
