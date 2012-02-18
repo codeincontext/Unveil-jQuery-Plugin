@@ -28,9 +28,10 @@
   
   <script type="text/javascript" charset="utf-8">
     function clickExample1(){
-      $('#imageExample').unveil();
-      $('#resetExamples').show();
-      $('#clickExample2, .example2').fadeIn();
+      $('#imageExample').unveil({},function(){
+        $('#resetExamples').fadeIn('slow');
+        $('#clickExample2, .example2').fadeIn('slow');
+      });
     }
     function clickExample2(){
       $('.example2 img').unveil();
