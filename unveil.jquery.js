@@ -41,6 +41,12 @@
 
 			$canvas.appendTo(elementToAppendTo);
 			base.startAnimation($canvas);
+			
+			// Sometimes the target appears before the canvas has loaded.
+			// Triggering show() at the next event loop pass definitely helps. As does a 50ms delay
+			setInterval(function(){
+				base.$el.show();
+			}, 50);
         };
 
         base.startAnimation = function($canvas){
@@ -69,7 +75,6 @@
 				ctx.arc(centerX, centerY, radius, startAngle, endAngle, true);
 				ctx.fill();
 
-				if (currentPosition == 0) base.$el.show();
 				currentPosition += anglePerTick;
 				if (currentPosition >= 2){
 					ctx.clearRect(0, 0, $canvas.width(), $canvas.height());
