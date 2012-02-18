@@ -55,18 +55,16 @@
 				height = $canvas.height(),
 			    centerX = width / 2,
 			    centerY = height / 2,
-				duration = 1000,
 				startAngle = Math.PI * -0.5,
 				currentPosition = 0;
-				fps = 60;
 			
 			// Calculate distance from center to corner of target
 			var radius = Math.sqrt(Math.pow(centerX,2) + Math.pow(centerY,2));
 			
-			var totalFrameCount = fps*(duration/1000);
+			var totalFrameCount = base.options.fps*(base.options.duration/1000);
 			var anglePerTick = 2/totalFrameCount;
 			
-			ctx.fillStyle = "rgb(255,255,255)";
+			ctx.fillStyle = base.options.color;
 			ctx.fillRect(0, 0, width, height);
 			
 			var interval = setInterval(function(){
@@ -83,7 +81,7 @@
 					$canvas.remove();
 					clearInterval(interval);
 				}
-			}, 1000/fps);
+			}, 1000/base.options.fps);
         };
 
         // Run initializer
@@ -91,7 +89,9 @@
     };
 
     $.unveil.defaultOptions = {
-        
+        color: '#FFFFFF',
+		duration: 1000,
+		fps: 60
     };
 
     $.fn.unveil = function(radius, options){
