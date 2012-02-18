@@ -13,19 +13,34 @@
       width:524px;
       height:128px;
     }
-    #cool {
+    #resetExamples {
+      display: none;
+    }
+    .example2 {
+      display: inline-block;
+      height: 100px;
+      width: 300px;
+    }
+    .example2 img {
       display: none;
     }
   </style>
   
   <script type="text/javascript" charset="utf-8">
-    function unveilImageExample(){
+    function clickExample1(){
       $('#imageExample').unveil();
-      $('#cool').fadeIn();
+      $('#resetExamples').show();
+      $('#clickExample2, .example2').fadeIn();
     }
-    function resetExample(){
-      $('#imageExample').fadeOut();
-      $('#cool').fadeOut();
+    function clickExample2(){
+      $('.example2 img').unveil();
+    }
+    function resetExamples(){
+      $('#imageExample').hide();
+      $('#resetExamples').hide();
+      $('#clickExample2').hide();
+      $('.example2').hide();
+      $('.example2 img').hide();
     }
   </script>
 </head>
@@ -36,12 +51,16 @@
     Unveil is a jQuery plugin that allows you to 'unveil' an element with a radial swipe (it's pretty).
   </p>
   <p>
-    If you want to see what it does, you should <a href="javascript:void(0)" onclick="unveilImageExample()">click here</a>.
+    If you want to see what it does, you should <a href="javascript:void(0)" onclick="clickExample1()">click here</a>. <a id="resetExamples" href="javascript:void(0)" onclick="resetExamples()">(reset)</a>
   </p>
   
   <img id="imageExample" src="http://upload.wikimedia.org/wikipedia/en/9/9e/JQuery_logo.svg" />
   
-  <p id="cool">Cool huh? <a href="javascript:void(0)" onclick="resetExample()">Reset example.</a></p>
+  <p id="clickExample2" style="display: none;">You can set options such as duration and color. But it has sensible defaults, and is pretty good at guessing. <a href="javascript:void(0)" onclick="clickExample2()">Click here.</a></p>
   
+  <div class="example2" style="display: none; background-color: #FFFF00;"><img width="300px" src="http://upload.wikimedia.org/wikipedia/en/9/9e/JQuery_logo.svg" /></div>
+  <div class="example2" style="display: none; background-color: #FF00FF;"><img width="300px" src="http://upload.wikimedia.org/wikipedia/en/9/9e/JQuery_logo.svg" /></div>
+  <div class="example2" style="display: none; background-color: #00FFFF;"><img width="300px" src="http://upload.wikimedia.org/wikipedia/en/9/9e/JQuery_logo.svg" /></div>
+  <div class="example2" style="display: none; background-color: #00FF00;"><img width="300px" src="http://upload.wikimedia.org/wikipedia/en/9/9e/JQuery_logo.svg" /></div>
 </body>
 </html>
