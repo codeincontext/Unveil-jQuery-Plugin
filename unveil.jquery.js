@@ -47,13 +47,16 @@
 			var ctx = $canvas[0].getContext("2d"),
 			    centerX = $canvas.width() / 2,
 			    centerY = $canvas.height() / 2,
-				duration = 500,
+				duration = 1000,
 				startAngle = Math.PI * -0.5,
 				currentPosition = 0;
 				fps = 60;
 			
 			// Calculate distance from center to corner of target
 			var radius = Math.sqrt(Math.pow(centerX,2) + Math.pow(centerY,2));
+			
+			var totalFrameCount = fps*(duration/1000);
+			var anglePerTick = 2/totalFrameCount;
 			
 			ctx.fillStyle = "rgb(255,255,255)";
 			
@@ -67,13 +70,13 @@
 				ctx.fill();
 
 				if (currentPosition == 0) base.$el.show();
-				currentPosition += 0.02;
+				currentPosition += anglePerTick;
 				if (currentPosition >= 2){
 					ctx.clearRect(0, 0, $canvas.width(), $canvas.height());
 					$canvas.remove();
 					clearInterval(interval);
 				}
-			}, duration/fps);
+			}, 1000/fps);
         };
 
         // Run initializer
