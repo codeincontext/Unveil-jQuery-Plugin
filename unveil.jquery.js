@@ -44,7 +44,7 @@
 			
 			// Sometimes the target appears before the canvas has loaded.
 			// Triggering show() at the next event loop pass definitely helps. As does a 50ms delay
-			setInterval(function(){
+			setTimeout(function(){
 				base.$el.show();
 			}, 50);
         };
