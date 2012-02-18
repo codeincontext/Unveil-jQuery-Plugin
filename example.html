@@ -9,15 +9,23 @@
   <style type="text/css">
     #imageExample {
       display: none;
+/*      border: 1px solid #999;*/
+      width:524px;
+      height:128px;
+    }
+    #cool {
+      display: none;
     }
   </style>
   
   <script type="text/javascript" charset="utf-8">
     function unveilImageExample(){
       $('#imageExample').unveil();
+      $('#cool').fadeIn();
     }
     function resetExample(){
       $('#imageExample').fadeOut();
+      $('#cool').fadeOut();
     }
   </script>
 </head>
@@ -31,11 +39,9 @@
     If you want to see what it does, you should <a href="javascript:void(0)" onclick="unveilImageExample()">click here</a>.
   </p>
   
-  <div id="imageExample">
-    <img src="http://upload.wikimedia.org/wikipedia/en/9/9e/JQuery_logo.svg" />
-    <p>Cool huh?</p>
-    <p><a href="javascript:void(0)" onclick="resetExample()">Reset example.</a></p>
-  </div>
+  <img id="imageExample" src="http://upload.wikimedia.org/wikipedia/en/9/9e/JQuery_logo.svg" />
+  
+  <p id="cool">Cool huh? <a href="javascript:void(0)" onclick="resetExample()">Reset example.</a></p>
   
 </body>
 </html>
