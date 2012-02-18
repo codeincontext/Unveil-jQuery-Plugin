@@ -50,6 +50,7 @@
 				duration = 500,
 				startAngle = Math.PI * -0.5,
 				currentPosition = 0;
+				fps = 60;
 			
 			// Calculate distance from center to corner of target
 			var radius = Math.sqrt(Math.pow(centerX,2) + Math.pow(centerY,2));
@@ -72,7 +73,7 @@
 					$canvas.remove();
 					clearInterval(interval);
 				}
-			}, duration/60);
+			}, duration/fps);
         };
 
         // Run initializer
