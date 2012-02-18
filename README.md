@@ -15,4 +15,3 @@ You can check it out here: http://skattyadz.github.com/Unveil-jQuery-Plugin/exam
 #### Problems:
 * This isn't particularly clever. It will only work if your content has a flat background colour (no gradients, images, or textures I'm afraid)
 * There might be a better way of doing this. This is the way I did it. Please let me know if that's the case.
-* Sometimes you get a flash of the target element before the canvas context is loaded / drawn to. This didn't happen before I made it into a jQuery plugin, so I might be able to make it load faster. I could easily delay the showing of the element. If this happens a lot to you, or never at all, let me know. 
