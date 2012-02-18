@@ -1,5 +1,5 @@
 (function($){
-    $.unveil = function(el, options){
+    $.unveil = function(el, options, callback){
         // To avoid scope issues, use 'base' instead of 'this'
         // to reference this class from internal events and functions.
         var base = this;
@@ -10,6 +10,8 @@
 
         // Add a reverse reference to the DOM object
         base.$el.data("unveil", base);
+
+		base.callback = callback;
 
         base.init = function(){
             base.options = $.extend({},$.unveil.defaultOptions, options);
@@ -81,6 +83,7 @@
 				if (currentPosition >= 2){
 					$canvas.remove();
 					clearInterval(interval);
+					if (base.callback) base.callback();
 				}
 			}, 1000/base.options.fps);
         };
@@ -103,9 +106,9 @@
 		fps: 60
     };
 
-    $.fn.unveil = function(options){
+    $.fn.unveil = function(options, callback){
         return this.each(function(){
-            (new $.unveil(this, options));
+            (new $.unveil(this, options, callback));
         });
     };
 
