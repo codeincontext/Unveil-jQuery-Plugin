@@ -94,7 +94,7 @@
 		fps: 60
     };
 
-    $.fn.unveil = function(radius, options){
+    $.fn.unveil = function(options){
         return this.each(function(){
             (new $.unveil(this, options));
         });
