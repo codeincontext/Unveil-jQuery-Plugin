@@ -67,6 +67,7 @@
 			var anglePerTick = 2/totalFrameCount;
 			
 			ctx.fillStyle = "rgb(255,255,255)";
+			ctx.fillRect(0, 0, width, height);
 			
 			var interval = setInterval(function(){
 				var endAngle = Math.PI * (currentPosition -0.5);
